@@ -26,42 +26,48 @@ const mongoose = require('mongoose');
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://admin:admin@martinscluster.w5rtkz0.mongodb.net/DB14?retryWrites=true&w=majority');
+  await mongoose.connect('mongodb+srv://admin:admin@clusterproj.lgf71e8.mongodb.net/?retryWrites=true&w=majority');
 
+  //mongodb+srv://admin:<password>@clusterproj.lgf71e8.mongodb.net/?retryWrites=true&w=majority
+  // mongodb+srv://mcyau17:yausaiwah995@cluster0.coaymg2.mongodb.net/?retryWrites=true&w=majority
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
 
-const bookSchema = new mongoose.Schema({
-  title:String,
-  cover:String,
-  author:String
+const CharacterInfoSchema = new mongoose.Schema({
+  name:String,
+  image:String,
+  race:String,
+  mainclass:String,
+  subclass:String
 })
 
-const bookModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', bookSchema);
+const CharacterInfoModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', CharacterInfoSchema);
 
-app.delete('/api/book/:id',async (req, res)=>{
+app.delete('/api/CharacterInfo/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
 
-  let book = await bookModel.findByIdAndDelete(req.params.id);
-  res.send(book);
+  let CharacterInfo = await CharacterInfoModel.findByIdAndDelete(req.params.id);
+  res.send(CharacterInfo);
 })
 
 
-app.put('/api/book/:id', async(req, res)=>{
+app.put('/api/CharacterInfo/:id', async(req, res)=>{
   console.log("Update: "+req.params.id);
 
-  let book = await bookModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
-  res.send(book);
+  let CharacterInfo = await CharacterInfoModel.findByIdAndUpdate(req.params.id, req.body, {new:true});
+  res.send(CharacterInfo);
 })
 
 
-app.post('/api/book', (req,res)=>{
+app.post('/api/CharacterInfo', (req,res)=>{
     console.log(req.body);
 
-    bookModel.create({
-      title:req.body.title,
-      cover:req.body.cover,
-      author:req.body.author
+    CharacterInfoModel.create({
+      name:req.body.name,
+      image:req.body.image,
+      race:req.body.race,
+      mainclass:req.body.mainclass,
+      subclass:req.body.subclass
     })
     .then(()=>{ res.send("Book Created")})
     .catch(()=>{ res.send("Book NOT Created")});
@@ -72,17 +78,17 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/api/books', async(req, res)=>{
+app.get('/api/CharacterInfo', async(req, res)=>{
     
-  let books = await bookModel.find({});
-  res.json(books);
+  let CharacterInfos = await CharacterInfoModel.find({});
+  res.json(CharacterInfos);
 })
 
-app.get('/api/book/:identifier',async (req,res)=>{
+app.get('/api/CharacterInfo/:identifier',async (req,res)=>{
   console.log(req.params.identifier);
 
-  let book = await bookModel.findById(req.params.identifier);
-  res.send(book);
+  let CharacterInfo = await CharacterInfoModel.findById(req.params.identifier);
+  res.send(CharacterInfo);
 })
 
 app.listen(port, () => {
