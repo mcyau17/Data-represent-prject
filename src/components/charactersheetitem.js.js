@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function CharacterSheetItem(props) {
 
-    return (
+    return (//creates the displayed card showing each feature of the character on the "My Characters" page
         <div>
             <Card>
                 <Card.Header>{props.mySheet.name}</Card.Header>
@@ -26,11 +26,12 @@ function CharacterSheetItem(props) {
                         </footer>
                     </blockquote>
                 </Card.Body>
+                {/* Displays the edit button and sends it the user to the edit page */}
                 <Link to={'/editcharacters/'+props.mySheet._id} className='btn btn-primary'>Edit</Link>
                 <Button variant='danger' onClick={
                     (e)=>{
                         e.preventDefault();
-
+                {/* Displays the delete button and removes the relevant character information*/}
             axios.delete('http://localhost:4000/api/CharacterInfo/'+props.mySheet._id)
                         .then((res)=>{
                             let reload = props.Reload();
@@ -39,9 +40,6 @@ function CharacterSheetItem(props) {
                     }
                 }>Delete</Button>
             </Card>
-            {/* <h3>{props.myBook.title}</h3>
-            <img src={props.myBook.thumbnailUrl}></img>
-            <p>{props.myBook.authors[0]}</p> */}
         </div>
     );
 

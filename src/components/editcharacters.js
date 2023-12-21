@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function EditCharacters() {
     let {id} = useParams();
-
+// Allows for the editing and addition of the displayed variables
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
     const [race, setRace] = useState('');
@@ -15,7 +15,7 @@ export default function EditCharacters() {
 
     useEffect(
         ()=>{
-
+            //allows access to the api
             axios.get('http://localhost:4000/api/CharacterInfo/'+id)
             .then((response)=>{
                 setName(response.data.name);
@@ -34,7 +34,7 @@ export default function EditCharacters() {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-
+//adds a variable for the array
         const CharacterInfo = {
             name:name,
             image:image,
@@ -42,7 +42,7 @@ export default function EditCharacters() {
             mainclass:mainclass,
             subclass:subclass
         }
-
+//allows the code to replace old information in the api with new and updated information
         axios.put('http://localhost:4000/api/CharacterInfo/'+id, CharacterInfo)
         .then((res)=>{
             navigate('/viewcharacters');
@@ -52,7 +52,7 @@ export default function EditCharacters() {
                 console.log(error)
             });
     }
-    return (
+    return (//displays the prompts to edit each feature of the characters
         <div>
             <h2>Hello from Edit component!</h2>
             <form onSubmit={handleSubmit}>

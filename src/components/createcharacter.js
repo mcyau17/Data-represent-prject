@@ -3,6 +3,8 @@ import axios from "axios";
 
 function CreateCharacter() {
 
+    // Allows for the editing and addition of the displayed variables
+
     const [name, setName] = useState('');
     const [image, setImage] = useState('');
     const [race, setRace] = useState('');
@@ -18,7 +20,7 @@ function CreateCharacter() {
         " Main Class: "+mainclass+
         " Sub Class: "+subclass
         );
-
+//adds a variable for the array
         const CharacterInfo = {
             name:name,
             image:image,
@@ -26,13 +28,14 @@ function CreateCharacter() {
             mainclass:mainclass,
             subclass:subclass
         };
+//allows the code to replace old information in the api with new and updated information
 
         axios.post('http://localhost:4000/api/CharacterInfo',CharacterInfo)
         .then()
         .catch();
 
     }
-    // some comment
+    // displays the prompts to add each feature of the characters
     return (
         <div>
             <h2>Create your character</h2>

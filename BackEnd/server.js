@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// getting-started.js
+// allows the app to acces the database
 const mongoose = require('mongoose');
 
 main().catch(err => console.log(err));
@@ -28,11 +28,10 @@ main().catch(err => console.log(err));
 async function main() {
   await mongoose.connect('mongodb+srv://admin:admin@clusterproj.lgf71e8.mongodb.net/?retryWrites=true&w=majority');
 
-  //mongodb+srv://admin:<password>@clusterproj.lgf71e8.mongodb.net/?retryWrites=true&w=majority
-  // mongodb+srv://mcyau17:yausaiwah995@cluster0.coaymg2.mongodb.net/?retryWrites=true&w=majority
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+
 }
 
+//puts the information in an array for the database
 const CharacterInfoSchema = new mongoose.Schema({
   name:String,
   image:String,
@@ -43,6 +42,7 @@ const CharacterInfoSchema = new mongoose.Schema({
 
 const CharacterInfoModel = mongoose.model('dfgdfgdfgdfg5r5645634fggh', CharacterInfoSchema);
 
+//allows the app to remove information from the database
 app.delete('/api/CharacterInfo/:id',async (req, res)=>{
   console.log("Delete: "+req.params.id);
 
@@ -50,7 +50,7 @@ app.delete('/api/CharacterInfo/:id',async (req, res)=>{
   res.send(CharacterInfo);
 })
 
-
+//allows the app to update the database
 app.put('/api/CharacterInfo/:id', async(req, res)=>{
   console.log("Update: "+req.params.id);
 
@@ -58,7 +58,7 @@ app.put('/api/CharacterInfo/:id', async(req, res)=>{
   res.send(CharacterInfo);
 })
 
-
+//allows the app to write to the database
 app.post('/api/CharacterInfo', (req,res)=>{
     console.log(req.body);
 
@@ -78,6 +78,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+//allows the app to read the database
 app.get('/api/CharacterInfo', async(req, res)=>{
     
   let CharacterInfos = await CharacterInfoModel.find({});

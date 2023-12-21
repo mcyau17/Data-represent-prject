@@ -1,5 +1,5 @@
 function Home() {
-    return (
+    return (//Main page text
         <div>
             <h1>What is Dungeons and Dragons</h1>
             <p>Dungeons and Dragons(D&D) is a tabletop roleplaying game that allows you to play as a fantasy character in a wide variety of fantasy settings.</p>
