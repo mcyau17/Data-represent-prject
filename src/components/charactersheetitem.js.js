@@ -13,15 +13,14 @@ function CharacterSheetItem(props) {
                     <blockquote className="blockquote mb-0">
                         <img src={props.mySheet.image}></img>
                         <footer>
-                        
                             {props.mySheet.race 
                             }
-                            </footer>
-                            <footer>
+                        </footer>
+                        <footer>
                             {props.mySheet.mainclass
                             }
-                            </footer>
-                            <footer>
+                        </footer>
+                        <footer>
                             {props.mySheet.subclass
                             }
                         </footer>

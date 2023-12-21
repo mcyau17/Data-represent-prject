@@ -16,7 +16,8 @@ function CreateCharacter() {
         " Image: "+image+
         " Race: "+race+
         " Main Class: "+mainclass+
-        " Sub Class: "+subclass);
+        " Sub Class: "+subclass
+        );
 
         const CharacterInfo = {
             name:name,

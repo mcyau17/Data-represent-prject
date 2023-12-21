@@ -69,8 +69,8 @@ app.post('/api/CharacterInfo', (req,res)=>{
       mainclass:req.body.mainclass,
       subclass:req.body.subclass
     })
-    .then(()=>{ res.send("Book Created")})
-    .catch(()=>{ res.send("Book NOT Created")});
+    .then(()=>{ res.send("Character Created")})
+    .catch(()=>{ res.send("Character NOT Created")});
 
 })
 

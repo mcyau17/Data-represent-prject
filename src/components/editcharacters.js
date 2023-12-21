@@ -9,7 +9,7 @@ export default function EditCharacters() {
     const [image, setImage] = useState('');
     const [race, setRace] = useState('');
     const [mainclass, setMainClass] = useState('');
-    const [subclass, setSubClass] = useState('');
+    const [subclass, setSubclass] = useState('');
 
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ export default function EditCharacters() {
                 setImage(response.data.image);
                 setRace(response.data.race);
                 setMainClass(response.data.mainclass);
-                setSubClass(response.data.subclass);
+                setSubclass(response.data.bio);
             })
             .catch(
                 (error)=>{
@@ -93,7 +93,7 @@ export default function EditCharacters() {
                     <input type="text"
                         className="form-control"
                         value={subclass}
-                        onChange={(e) => { setSubClass(e.target.value) }}
+                        onChange={(e) => { setSubclass(e.target.value) }}
                     />
                 </div>
                 <div>
